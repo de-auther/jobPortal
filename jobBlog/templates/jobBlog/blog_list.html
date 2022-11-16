@@ -1,0 +1,42 @@
+{% extends 'jobHome/base.html'%}
+{% load static %}
+{% block content %}
+
+
+<div>
+<div class="container" style=" margin-top: 200px;">
+  <h2 style = "margin:20px">Blogs & News</h2>
+
+  
+  
+
+  
+
+  <br>
+
+
+
+  <div class = " scroll  " style=" margin:auto;  margin-left:10px; height: 1010px; border-radius:10px">
+  {% for blog in blogs %}
+    
+  <div class = "shadow  md-5 pt-2  section-title " style=" border:1px solid rgb(202, 198, 198);margin-left:10px;  border-radius:10px   ">
+
+    <h4 style="margin:10px;">{{blog.head}}</h4>
+    <p style="margin: 10px;"><i class="fa fa-calendar"></i> Posetd on {{blog.date}}</p>
+    <p class="trunc" style="margin:10px ;">{{blog.content1}}</p>
+    <button style=" margin: 10px; color:#0099CC; background-color: transparent; border: 2px solid #0099CC; border-radius: 5px;"><a href="{{blog.get_url}}">Get Details</a></button>
+
+    
+    
+  </div>
+<br>
+
+{% endfor %}
+
+</div>
+
+
+
+
+
+{% endblock %}

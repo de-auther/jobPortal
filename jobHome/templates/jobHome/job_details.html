@@ -1,0 +1,99 @@
+{% extends 'jobHome/base.html'%}
+{% load static %}
+{% block content %}
+
+
+<div>
+  <div class="container" style=" margin-top: 200px;">
+    
+                <h2 style = "margin:20px">Job Details</h2>
+              </div>
+                <div class="container position-relative">
+                   <div class = "shadow  md-5 pt-2  section-title " style="border:1px solid rgb(202, 198, 198); margin-left:10px;  border-radius:10px ">
+
+                     <h4 style="margin:10px;">{{details.post_name}}</h4>
+                      <p style="margin: 10px;"><i class="fa fa-bank"></i> {{details.organization_name}}</p>
+                     <h6 style="margin:10px ;"><i class="fa fa-map-marker"></i> {{details.job_location}} | <i class="fa fa-suitcase"></i> {{details.job_type}}</h6>
+                     <h6 style="margin:10px;"><i class="fa fa-calendar"></i> Last Date : {{details.end_date}}</h6>
+                     <button onclick="location.href ='{{details.apply_link}}';" style=" margin: 10px; color:#0099CC; background-color: transparent; border: 2px solid #0099CC; border-radius: 5px;">Apply Now</button>
+                   </div>
+
+                      <br>
+
+
+                        <div class = " scroll  shadow  md-5 pt-2  section-title position-relative" style="border:1px solid rgb(202, 198, 198) ; margin-left:10px; height: 1000px; border-radius:10px">
+                            
+                            <center><img style="height:200px ; width: 250px; border-radius: 100%; " src="{{details.photo}}" alt=""></center><br>
+
+                            <h4>Brief Discription</h4><br>
+                            <h6>Organization Name : {{details.organization_name}}</h6>
+                            <h6>Post_name        : {{details.post_name}}</h6>
+                            <h6>Location         : {{details.job_location}}</h6>
+                            <h6>Vaccancies       : {{details.vaccancies}}</h6>
+                            <h6>Job Type         : {{details.job_type}}</h6>
+                            <h6>Salary           : {{details.salary}}</h6>
+                            <h6>Recruitement Type : {{details.recruitement_type}}</h6>
+                            <h6>Ad. No           : {{details.advt_nbr}}</h6>
+                            <h6>Mode of Application : {{details.mod_of_application}}</h6>
+                            <h6>End date           : {{details.end_date}}</h6><br>
+
+
+                            <h4>Vacancies</h4><br>
+                            <p style="white-space:pre-wrap; font-size: 16px;">{{details.vaccancy_details}}</p><br>
+
+                            <h4>Qualification Required</h4><br>
+                            <p style="white-space:pre-wrap; font-size: 16px;">{{details.qualification_details}}</p><br>
+
+                            <h4>Age Limit</h4><br>
+                            <p style="white-space:pre-wrap; font-size: 16px;">{{details.age_limit_details}}</p><br>
+
+                            <h4>Selection Process</h4><br>
+                            <p style="white-space:pre-wrap; font-size: 16px;">{{details.selection_process_details}}</p><br>
+
+                            <h4>Application Fee</h4><br>
+                            <p style="white-space:pre-wrap; font-size: 16px;">{{details.application_fee_details}}</p><br>
+
+                            <h4>Important Dates</h4><br>
+                            <p style="white-space:pre-wrap; font-size: 16px;">{{details.dates_details}}</p><br>
+
+                            <h4>How To Apply?</h4><br>
+                            <p style="white-space:pre-wrap; font-size: 16px;">{{details.how_to_apply}}</p><br>
+
+
+
+                            
+                            
+                            
+
+
+                        </div>
+
+                    <br>
+
+                        <div class = " shadow  md-5 pt-2  section-title position-relative" style="border: 1px solid rgb(202, 198, 198); margin:10px;  border-radius:10px  ">
+                            <h6 style="margin:10px;">Last date to Apply: {{details.end_date}}</h6>
+
+
+                        <button onclick="location.href ='{{details.apply_link}}';"style=" margin: 10px; color:#0099CC; background-color: transparent; border: 2px solid #0099CC; border-radius: 5px; height:50px; width:200px;">Apply Now</button>
+                    </div>
+                </div>
+              </div>
+</div>
+</div>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

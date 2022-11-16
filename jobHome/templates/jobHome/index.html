@@ -1,0 +1,226 @@
+{% extends 'jobHome/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="col-lg-6 align-self-center">
+            <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+              {% for link in links %}
+              <h6 style="color: green;">Welcome to Career Kerala</h6>
+              <h2>You Never Miss <em>A Job</em> &amp; <span style="color: green;">A Career</span> Opertunity</h2>
+              <p>This is an initiative and our aim is provide the right in first time. Your talents never wasted, it must gives you something worthy...join on <a  href="{{link.whatsapp}}">whatsapp <i style="font-size: 22x;" class="fa fa-whatsapp" ></i></a>, and<a  href="{{link.telegram}}"> telegram <i style="font-size: 22px;" class="fa fa-telegram" ></i></a></p>
+              
+              <form id="key" action="{% url 'search' %}" method="GET">
+                <fieldset>
+                  <input type="text" name="address"  placeholder="Type a Job..." autocomplete="on" required>
+                </fieldset>
+                <fieldset>
+                  <button style="color: green;" type="submit" class="main-button">Search</button>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+              <img src="{% static 'assets/images/banner-right-image.png' %}" alt="team meeting">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="container" >
+              <h1 style = "margin:20px">Categories</h1>
+            </div>
+
+
+
+
+
+  <div id="about" class="about-us section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="left-image wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+            <img src="{% static 'assets/images/about-left-image.png' %}" alt="person graphic">
+          </div>
+        </div>
+        <div class="col-lg-8 align-self-center">
+          <div class="services">
+            <div class="row">
+              
+              {% for i in categories %}
+              <div class="col-lg-6">
+                <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
+                  
+                  <div class="">
+                    <a href="{{ i.get_url }}">   <img style="height:80px ; width: 80px; border-radius: 100%; " src="{{i.photo}}" alt="reporting">
+                  </div>
+                  
+                  <div class="center-text">
+                    <h4>{{i.categories}}</h4>
+                  </div>
+                </a>
+                </div>
+              </div>
+             {% endfor %}
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container" >
+              <h1 style = "margin:20px">Latest Jobs</h1>
+            </div>
+
+            <div id="services" class="our-services section">
+            <div class="container">
+              <div class="row">
+                
+                <div class="shadow col-lg-6 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.2s">
+                      <div class="scroll"  style="height: 800px;">
+
+                    {% for job  in jobs %}
+                    {% if forloop.counter < 10 %}
+
+                  <div class = " shadow  md-5 pt-2  section-title position-relative" style=" border: 1px solid grey;background-color: transparent;margin-left:10px;  border-radius:10px ">
+                                
+                                <div style=" width:510px; width: auto;" >
+                                <h6 style="margin:10px;">{{job.post_name}}</h6>
+                                <p style="margin:10px ;">{{job.job_location}}--->{{job.job_type}}</p>
+                                <p style="margin:10px;">{{job.salary}}$</p>
+                                <button style=" margin: 10px; color:#0099CC; background-color: transparent; border: 2px solid #0099CC; border-radius: 5px;"><a href="{{job.get_url}}">Get Details</a></button>
+
+                                </div>
+                              </div> <br>
+                              {% endif %}
+                              {% endfor %}
+
+                          </div> <br>
+                          <a href="{% url 'job_list' %}"><center><h5>See More >></h5></center></a>
+
+
+                </div>
+                <div class="col-lg-6 align-self-center  wow fadeInRight " data-wow-duration="1s" data-wow-delay="0.2s">
+                  <div class="left-image">
+                    <img src="{% static 'assets/images/services-left-image.png' %}" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+  <div id="blog" class="our-blog section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.25s">
+          <div class="section-heading">
+            <h2><em>Blogs</em> & <span style="color: green;">News</span></h2>
+          </div>
+        </div>
+        <div class="col-lg-6 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.25s">
+          <div class="top-dec">
+            <img src="{% static 'assets/images/blog-dec.png' %}" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        
+        
+        <div class="col-lg-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.25s">
+          <div class="right-list">
+            <ul>
+             {% for blog in blogs %}
+             {% if forloop.counter < 4 %}
+              <li>
+                <div class="left-content align-self-center">
+                  <span><i class="fa fa-calendar"></i> {{blog.date}}</span>
+                  <a href="{{blog.get_url}}"><h4>{{blog.head}}</h4></a>
+                  <p class="trunc">{{blog.content1}}</p>
+                </div>
+                <div class="right-image">
+                <a href="#"><img src="{{blog.photo1}}" alt=""></a>
+                </div>
+              </li>
+              {% endif %}
+              {% endfor %}
+              
+            </ul>
+          </div>
+          <div class="main-blue-button">
+            <a href="{% url 'job_blog' %}">Discover More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="contact" class="contact-us section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 align-self-center wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.25s">
+          <div class="section-heading">
+            <h2>Feel Free To Send Us your opinions & feedbacks</h2>
+            <p>It can lead to solve problems and make innovations</p>
+            <div class="phone-info">
+              <h4>For any enquiry, Call Us: <span><i class="fa fa-phone"></i> <a href="#">09446982790</a></span></h4>
+              <h4>Whatsapp <a href="{{link.whatsapp}}">Join <i class="fa fa-whatsapp"></i></a> and Telegram <a href="{{link.telegram}}">Join <i class="fa fa-whatsapp"></i></a></h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0.25s">
+          <form id="contact" action="{% url 'job_home' %}" method="post">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-lg-6">
+                <fieldset>
+                  <input type="name" name="name" id="name" placeholder="Full Name" autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-6">
+                
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email" required="">
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <textarea name="message" type="text" class="form-control" id="message" placeholder="Message" required=""></textarea>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="main-button ">Send Message</button>
+                </fieldset>
+              </div>
+            </div>
+            <div class="contact-dec">
+              <img src="{% static 'assets/images/contact-decoration.png' %}" alt="">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endfor %}
+
+  
+{% endblock %}
